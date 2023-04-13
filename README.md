@@ -22,7 +22,7 @@ and then run the following commands:
 
 ```commandline
 poetry install
-poetry run python3 manage.py runserver
+poetry run python3 core/manage.py runserver
 ```
 
 To run inside of docker, which is recommended, use this
