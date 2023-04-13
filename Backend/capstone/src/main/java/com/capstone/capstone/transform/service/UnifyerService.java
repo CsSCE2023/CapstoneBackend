@@ -12,10 +12,10 @@ public class UnifyerService {
         ObjectMapper mapper = new ObjectMapper();
 
         // De-serialize to an object
-        UnifiedProduct product = mapper.readValue("{\"name\": \"John\"}", UnifiedProduct.class);
+        UnifiedProduct product = mapper.readValue("{\"name\": \"Milk\"}", UnifiedProduct.class);
 
         // Read a single attribute
-        JsonNode nameNode = mapper.readTree("{\"name\": \"John\"}");
+        JsonNode nameNode = mapper.readTree("{\"name\": \"Milk\"}");
 
         return temp;
     }
