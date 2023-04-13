@@ -1,0 +1,25 @@
+services:
+
+  backend:
+    build:
+      dockerfile: docker/Dockerfile
+      context: .
+    command:
+        - bash
+        - -c
+        - |
+            poetry run python core/manage.py migrate
+            poetry run python core/manage.py runserver
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres:15.2-bullseye
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
