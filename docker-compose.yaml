@@ -4,12 +4,14 @@ services:
     build:
       dockerfile: docker/Dockerfile
       context: .
+    ports:
+     - "8000:8000"
     command:
         - bash
         - -c
         - |
             poetry run python core/manage.py migrate
-            poetry run python core/manage.py runserver
+            poetry run python core/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
     depends_on:

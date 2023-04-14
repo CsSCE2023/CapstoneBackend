@@ -21,6 +21,10 @@ install:
 pre-commit-install:
 	pre-commit install
 
+.PHONY: check-mypy
+check-mypy:
+	mypy --config-file pyproject.toml $(CODE)
+
 #* Formatters
 .PHONY: codestyle
 codestyle:

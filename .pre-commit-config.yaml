@@ -41,3 +41,11 @@ repos:
         entry: autoflake --in-place --remove-all-unused-imports --ignore-init-module-imports
         types: [ python ]
         language: system
+
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy --config-file pyproject.toml
+        types: [ python ]
+        language: system
