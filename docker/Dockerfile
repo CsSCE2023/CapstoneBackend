@@ -11,7 +11,5 @@ COPY pyproject.toml poetry.lock ./
 
 RUN poetry config virtualenvs.in-project false && \
     poetry install --no-dev
-
 COPY . .
-
-CMD poetry run python3 core/manage.py runserver
+#CMD poetry run python3 core/manage.py runserver
