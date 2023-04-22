@@ -1,6 +1,6 @@
 #* Variables
 SHELL := /usr/bin/env bash
-PYTHON := python
+PYTHON := python3
 
 #* Directories with source code
 CODE = core
@@ -16,10 +16,7 @@ poetry-download:
 install:
 	poetry install -n
 	poetry run mypy --install-types --non-interactive $(CODE)
-
-.PHONY: pre-commit-install
-pre-commit-install:
-	pre-commit install
+	poetry run pre-commit install
 
 .PHONY: check-mypy
 check-mypy:
