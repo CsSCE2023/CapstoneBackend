@@ -21,18 +21,3 @@ from django.urls import path
 urlpatterns = [
     path("admin/", admin.site.urls),
 ]
-
-"""
-from django.contrib import admin
-from django.urls import path, include
-from ninja import Router
-from .views import list_products, list_categories
-
-router = Router()
-router.add_router('', list_products, list_categories)
-
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("api/", include(router.urls)),
-]
-"""
