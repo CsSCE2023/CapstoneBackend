@@ -1,0 +1,30 @@
+[
+    {
+      "model": "myapp.product",
+      "pk": 1,
+      "fields": {
+        "name": "Product 1",
+        "category": "Category 1",
+        "price": 10.00
+      }
+    },
+    {
+      "model": "myapp.product",
+      "pk": 2,
+      "fields": {
+        "name": "Product 2",
+        "category": "Category 2",
+        "price": 20.00
+      }
+    },
+    {
+      "model": "myapp.product",
+      "pk": 3,
+      "fields": {
+        "name": "Product 3",
+        "category": "Category 1",
+        "price": 30.00
+      }
+    }
+  ]
+  

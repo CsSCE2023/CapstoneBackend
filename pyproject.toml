@@ -25,3 +25,17 @@ pylint = "^2.17.2"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+# https://mypy.readthedocs.io/en/latest/config_file.html#using-a-pyproject-toml-file
+python_version = 3.9
+pretty = true
+show_traceback = true
+color_output = true
+plugins = [
+"pydantic.mypy",
+"mypy_django_plugin.main"
+]
+
+[tool.django-stubs]
+django_settings_module = "core.core.settings"
