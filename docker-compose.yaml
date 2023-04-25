@@ -12,6 +12,7 @@ services:
         - |
             poetry run python core/manage.py makemigrations
             poetry run python core/manage.py migrate
+            poetry run python core/manage.py su_init
             poetry run python core/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
