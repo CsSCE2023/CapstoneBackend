@@ -1,3 +1,5 @@
+package com.capstone.capstone.transform.entities;
+
 /*
 This class transforms scraped data into a unified format for indexing
 *
