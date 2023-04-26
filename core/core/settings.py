@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "core",  # change this to the real app later
     # my apps
     "django_filters",
-    "myapp",  # uncomment this
+    "myapp",
 ]
 
 MIDDLEWARE = [
