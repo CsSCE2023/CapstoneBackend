@@ -8,10 +8,14 @@ from .models import Product
 
 def product_list(request):
     products = Product.objects.all()
+    name = request.GET.get("name")
     category = request.GET.get("category")
     price = request.GET.get("price")
+    print(f"name: {name}")
     print(f"Category: {category}")
     print(f"Price: {price}")
+    if name:
+        products = products.filter(name=name)
     if category:
         products = products.filter(category=category)
     if price:
