@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Product List</h1>
+    <form method="get">
+        <label for="name">name:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="category">Category:</label>
+        <input type="text" name="category" id="category">
+        <br>
+        <label for="price">Price:</label>
+        <input type="text" name="price" id="price">
+        <br>
+        <input type="submit" value="Filter">
+    </form>
+    <hr>
+    <ul>
+    {% for product in products %}
+        <li>{{ product.name }} - {{ product.category }} - {{ product.price }}</li>
+     {% empty %}
+        <li>No products found.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
