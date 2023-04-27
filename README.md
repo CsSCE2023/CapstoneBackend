@@ -13,20 +13,16 @@ hook and install dependencies, run the following commands:
 ```commandline
 make poetry-download
 make install
-make pre-commit-install
-poetry install
 ```
 
 ## To run the project
 
 Use `.env` to specify environment configuration. You can use `.env.example` as a template.
 
-
-
-To run outside of docker, run the following commands:
+To run outside of docker, run the following command:
 
 ```commandline
-poetry run python3 core/manage.py runserver 0.0.0.0:8000
+make up
 ```
 
 For the dockerized version, inside the Backend folder, you need to run the dockerfile twice. First run:
