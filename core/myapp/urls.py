@@ -1,7 +1,14 @@
 from django.urls import path
+from ninja import NinjaAPI
 
-from .views import product_list
+from . import views
+
+api = NinjaAPI()
+
+
+api.add_router("/product", views.router)
+
 
 urlpatterns = [
-    path("products/", product_list, name="product_list"),
+    path("api/", api.urls),
 ]
