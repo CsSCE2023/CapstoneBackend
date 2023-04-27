@@ -1,4 +1,4 @@
-package com.capstone.capstone.load.entities;
+package com.capstone.capstone.auth.entities;
 
 
 import jakarta.persistence.*;
