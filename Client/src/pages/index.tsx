@@ -67,11 +67,11 @@ export default function Home() {
       return;
     }
     const products = searchResults.filter((s) =>
-      s.name.toLowerCase().includes(search.toLowerCase())
+      s.title.toLowerCase().includes(search.toLowerCase())
     );
     setSearchResults(products);
     setFilteredResults(products);
-  }, [search, searchResults]);
+  }, [search]);
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(event.target.value);
   };

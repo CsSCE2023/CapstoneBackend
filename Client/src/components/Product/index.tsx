@@ -42,7 +42,7 @@ interface SearchResultsProps {
 
 const SearchResults: React.FC<SearchResultsProps> = ({ results }) => (
   <div className="search-results-container mt-8 max-w-5xl">
-    <div className="flex flex-wrap -m-4">
+    <div className="flex flex-wrap -m-4 justify-center items-center">
       {results.map((result, index) => (
         <Product key={index} result={result} />
       ))}
