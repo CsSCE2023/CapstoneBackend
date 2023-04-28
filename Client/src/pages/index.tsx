@@ -13,25 +13,38 @@ export default function Home() {
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [filteredResults, setFilteredResults] = useState<SearchResult[]>([]);
   const [filter, setFilter] = useState<string>("all");
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const [search, setSearch] = useState("");
   async function fetchSearchResults() {
-    const response = await fetch("/products.json");
-    const data = await response.json();
-    console.log(data);
-    setSearchResults(
-      data.products.data.items.map((p: SearchResult) => {
-        return {
-          ...p,
-          image: "https://picsum.photos/200/300",
-          link: `/products/${p.id}`,
-        };
-      })
-    );
+    const urls = [
+      "/aldi-products.json",
+      "/edeka-products.json",
+      "/rewe-products.json",
+    ];
+    const supermarkets = ["aldi-nord", "edeka", "rewe"];
+    const requests = urls.map((url) => fetch(url));
+    const responses = await Promise.all(requests);
 
-    setCategories(
-      Array.from(new Set(data.products.data.items.map((p) => p.category)))
-    );
+    const json = responses.map((res) => res.json());
+
+    const data = await Promise.all(json);
+
+    const flatData = data
+      .flatMap((d, index) => {
+        return d.map((d1: SearchResult) => {
+          return {
+            ...d1,
+            supermarket: supermarkets[index],
+          } as SearchResult;
+        });
+      })
+      .reverse() as SearchResult[];
+    setSearchResults(flatData);
+
+    const categories: string[] = flatData
+      .filter((p) => typeof p.category !== "undefined")
+      .map((p) => p.category);
+    setCategories(Array.from(new Set(categories)));
   }
   // Fetch search results from an API or another data source
   useEffect(() => {
@@ -54,11 +67,11 @@ export default function Home() {
       return;
     }
     const products = searchResults.filter((s) =>
-      s.name.toLowerCase().includes(search.toLowerCase())
+      s.title.toLowerCase().includes(search.toLowerCase())
     );
     setSearchResults(products);
     setFilteredResults(products);
-  }, [search, searchResults]);
+  }, [search]);
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(event.target.value);
   };

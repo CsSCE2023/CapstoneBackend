@@ -4,10 +4,11 @@ import Image from "next/image";
 
 interface FoodItem {
   id: number;
-  name: string;
-  image: string;
+  title: string;
+  img_link: string;
   description: string;
   price: number;
+  article_link: string;
 }
 
 interface Review {
@@ -34,34 +35,54 @@ const ProductPage = (result: SearchResult) => {
   const onAddToCart = (selectedFood: any) => {};
   const relatedFoods = [
     {
-      id: "GGOEYXXX0938",
-      name: "YouTube Icon Pullover Black",
-      description:
-        "This YouTube pullover hoodie will keep you warm while looking stylish with the tone on tone logo.",
-      features:
-        "<p>8oz. 52% Cotton. 48% Polyester. Fleece</p>\n<p>Kangaroo pocket</p>\n<p>Matching drawcords</p>\n<p>",
-      price: "59.99",
-      keywords: "YouTube Icon Pullover Black, pullover, hoodie",
-      url: "YouTube+Icon+Pullover+Black",
-      category: "apparel",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxaXrDEWDRb2CsjgHuqY8Gn2iy7-ByrDe0EQ&usqp=CAU",
-      subcategory: "apparel",
+      id: 17,
+      title: "Ritter Sport Schokolade Nuss- oder Kakaoklasse",
+      price: "1,00",
+      article_link:
+        "https://www.rewe.de/angebote/bremen-radio-bremen/431004/rewe-markt-schwachhauser-heerstr-207/#8749438",
+      img_url: "",
+      description: "placeholder",
+      scraped_date: "2023-04-25",
+      date_expires: "2023-04-29",
+      weight: "palceholder",
+      img_link:
+        "https://img.rewe-static.de/KLEIN17_2023/8749438/36795098-11_digital-image.png?impolicy=s-offers&imwidth=200&output-format=image/webp",
+      extra_details: "palceholder",
+      date_published: "palceholder",
+      supermarket: "rewe",
     },
     {
-      id: "GGOEYXXX0937",
-      name: "YouTube Wordmark Crew Grey",
-      description:
-        "Kick back and relax in this comfortable YouTube sweatshirt. Unisex sizing.",
-      features:
-        "<p>Unisex sizing</p>\n<p>Raglan sleeves</p>\n<p>1x1 ribbed cuffs and waistband inch</p>",
-      image:
-        "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQ97tIucvkmmzp_Df_a0oy8yvx4dWMab9tJ3I_0JhxkXAjhbDDxwomjI5q6rPNSa9I9sje_A964SUE&usqp=CAc",
-      price: "51.99",
-      keywords: "YouTube Wordmark Crew Grey, YouTube, sweatshirt",
-      url: "YouTube+Wordmark+Crew+Grey",
-      category: "apparel",
-      subcategory: "apparel",
+      id: 3,
+      title: "Ferrero Nutella",
+      price: 1.79,
+      weight: "450+50g Glas",
+      description: "Nuss-Nougat-Creme, 450+50g Glas, (1kg=3,58)",
+      article_link: "placeholder",
+      category: "sweets",
+      img_link:
+        "https://offer-images.api.edeka/88f7839f-2ce1-4078-b595-758ff8cfa539_4008400402222_PER.png",
+      extra_details:
+        "*Nicht in allen Filialen erhältlich. Alle weiteren Informationen der Firma und Anschrift Ihres teilnehmenden EDEKA-Marktes finden Sie unter www.edeka.de/marktsuche oder unter der Telefonnummer 0800 724 28 55 (kostenfrei aus dem dt. Fest- und Mobilfunknetz). Alle Angebote gültig bis Samstag, 29.04.2023, KW 17. Wir haben uns für diesen Zeitraum ausreichend bevorratet. Bitte entschuldigen Sie, wenn die Artikel auf Grund der großen Nachfrage dennoch im Einzelfall ausverkauft sein sollten. Abgabe in haushaltsüblichen Mengen. Für Darstellungsfehler übernehmen wir keine Haftung. EDEKA-Markt Minden-Hannover GmbH, Wittelsbacherallee 61, 32427 Minden.",
+      date_published: "2023-04-29",
+      date_expires: "2023-04-24",
+      scraped_date: "2023-04-25",
+      supermarket: "edeka",
+    },
+    {
+      id: 12,
+      title: "Spargel weiß",
+      price: 7.29,
+      weight: "placeholder",
+      description: "Klasse 2; Deutschland",
+      article_link:
+        "https://www.aldi-nord.de/angebote/aktion-mo-24-04/spargel-weiss-1013810-1-1.article.html",
+      img_link:
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+      extra_details: "palceholder",
+      date_published: "2023-04-23",
+      date_expires: "placeholder",
+      scraped_date: "2023-04-25",
+      supermarket: "aldi",
     },
   ];
   const reviews: Review[] = [
@@ -90,14 +111,14 @@ const ProductPage = (result: SearchResult) => {
         <div className="w-full md:w-1/2 flex justify-center">
           <Image
             className="w-96 h-auto"
-            src={selectedFood.image}
-            alt={selectedFood.name}
+            src={selectedFood.img_link}
+            alt={selectedFood.title}
             width={300}
             height={300}
           />
         </div>
         <div className="w-full md:w-1/2 p-4">
-          <h2 className="text-3xl font-semibold mb-4">{selectedFood.name}</h2>
+          <h2 className="text-3xl font-semibold mb-4">{selectedFood.title}</h2>
           <p className="mb-4">{selectedFood.description}</p>
           <p className="mb-4 text-xl font-semibold">${selectedFood.price}</p>
           <button
@@ -106,6 +127,15 @@ const ProductPage = (result: SearchResult) => {
           >
             Add to Cart
           </button>
+          <div className="mt-2">
+            <a
+              href={selectedFood.article_link}
+              target="_blank"
+              className="text-blue-500  hover:text-blue-300"
+            >
+              View original article
+            </a>
+          </div>
         </div>
       </div>
       <h3 className="text-2xl font-semibold mt-8 mb-4">Related Foods</h3>
@@ -120,12 +150,16 @@ const ProductPage = (result: SearchResult) => {
           >
             <Image
               className="w-full h-auto mb-2"
-              src={relatedFood.image}
-              alt={relatedFood.name}
+              src={relatedFood.img_link}
+              alt={relatedFood.title}
               width={200}
               height={200}
             />
-            <p className="text-sm">{relatedFood.name}</p>
+            <p className="text-md font-bold">{relatedFood.title}</p>
+            <p className="text-sm ">
+              SuperMarket{" "}
+              <span className="font-bold">{relatedFood.supermarket}</span>
+            </p>
           </div>
         ))}
       </div>
@@ -151,21 +185,24 @@ const ProductPage = (result: SearchResult) => {
 // This function gets called at build time
 export async function getServerSideProps(context: any) {
   const { product: id } = context.params;
+  const { supermarket } = context.query;
   // Call an external API endpoint to get posts
   console.log(id, process.env["HOST"]);
-  const response = await fetch(`http://${process.env["HOST"]}/products.json`);
-  const products = await response.json();
-  let product = products.products.data.items.find(
-    (p: SearchResult) => p.id == id
+  console.log(supermarket);
+  const response = await fetch(
+    `http://${process.env["HOST"]}/${supermarket}-products.json`
   );
+
+  const products = await response.json();
+  console.log(products);
+  let product = products.find((p: SearchResult) => p.id == id);
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   return {
     props: {
       ...product,
-      image: "https://picsum.photos/200/300",
-      link: `/products/${product.id}`,
+      supermarket: supermarket,
     },
   };
 }

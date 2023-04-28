@@ -1,10 +1,13 @@
 export interface SearchResult {
-  id: string;
-  price: string;
+  id: number;
+  price: number;
   title: string;
   link: string;
   description: string;
   category: string;
-  name: string;
-  image: string;
+  article_link: string;
+  img_link: string;
+  supermarket?: string;
+  date_expires: string;
+  scraped_date: string;
 }
