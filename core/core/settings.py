@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "core",  # change this to the real app later
     # my apps
     "django_filters",
+    "django_extensions",
     "myapp",
 ]
 

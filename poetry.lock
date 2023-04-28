@@ -188,6 +188,21 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-extensions"
+version = "3.2.1"
+description = "Extensions for Django"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "django-extensions-3.2.1.tar.gz", hash = "sha256:2a4f4d757be2563cd1ff7cfdf2e57468f5f931cc88b23cf82ca75717aae504a4"},
+    {file = "django_extensions-3.2.1-py3-none-any.whl", hash = "sha256:421464be390289513f86cb5e18eb43e5dc1de8b4c27ba9faa3b91261b0d67e09"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "django-filter"
 version = "23.1"
 description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
@@ -249,14 +264,14 @@ compatible-mypy = ["mypy (>=1.1.1,<1.2)"]
 
 [[package]]
 name = "django-stubs-ext"
-version = "0.8.0"
+version = "4.2.0"
 description = "Monkey-patching and extensions for django-stubs"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "django-stubs-ext-0.8.0.tar.gz", hash = "sha256:9a9ba9e2808737949de96a0fce8b054f12d38e461011d77ebc074ffe8c43dfcb"},
-    {file = "django_stubs_ext-0.8.0-py3-none-any.whl", hash = "sha256:a454d349d19c26d6c50c4c6dbc1e8af4a9cda4ce1dc4104e3dd4c0330510cc56"},
+    {file = "django-stubs-ext-4.2.0.tar.gz", hash = "sha256:7789f0caeca7152fef07ad6b94dec7310a05d0b8dab77f7979e19db0037b5127"},
+    {file = "django_stubs_ext-4.2.0-py3-none-any.whl", hash = "sha256:55b2e3077f883e0131a7596f8ff8b19f8fc3ca325a3318ccacf5331acb2601e4"},
 ]
 
 [package.dependencies]
@@ -470,14 +485,14 @@ files = [
 
 [[package]]
 name = "platformdirs"
-version = "3.3.0"
+version = "3.5.0"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "platformdirs-3.3.0-py3-none-any.whl", hash = "sha256:ea61fd7b85554beecbbd3e9b37fb26689b227ffae38f73353cbcc1cf8bd01878"},
-    {file = "platformdirs-3.3.0.tar.gz", hash = "sha256:64370d47dc3fca65b4879f89bdead8197e93e05d696d6d1816243ebae8595da5"},
+    {file = "platformdirs-3.5.0-py3-none-any.whl", hash = "sha256:47692bc24c1958e8b0f13dd727307cff1db103fca36399f457da8e05f222fdc4"},
+    {file = "platformdirs-3.5.0.tar.gz", hash = "sha256:7954a68d0ba23558d753f73437c55f89027cf8f5108c19844d4b82e5af396335"},
 ]
 
 [package.extras]
@@ -745,14 +760,14 @@ files = [
 
 [[package]]
 name = "tomlkit"
-version = "0.11.7"
+version = "0.11.8"
 description = "Style preserving TOML library"
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "tomlkit-0.11.7-py3-none-any.whl", hash = "sha256:5325463a7da2ef0c6bbfefb62a3dc883aebe679984709aee32a317907d0a8d3c"},
-    {file = "tomlkit-0.11.7.tar.gz", hash = "sha256:f392ef70ad87a672f02519f99967d28a4d3047133e2d1df936511465fbb3791d"},
+    {file = "tomlkit-0.11.8-py3-none-any.whl", hash = "sha256:8c726c4c202bdb148667835f68d68780b9a003a9ec34167b6c673b38eff2a171"},
+    {file = "tomlkit-0.11.8.tar.gz", hash = "sha256:9330fc7faa1db67b541b28e62018c17d20be733177d290a13b24c62d1614e0c3"},
 ]
 
 [[package]]
@@ -912,4 +927,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "665783c9930e71435f6b8a2d90422fc56552146051377ac18d8f37b3c7103874"
+content-hash = "6c9a8efd933259df8853ac5c423690fccf0f0b254ae03fce8fad7479303e4e4a"
