@@ -1,26 +1,105 @@
-
-{% extends 'base.html' %}
-
-{% block content %}
+<!-- product_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #ddd;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .pagination a, .current-page {
+            display: inline-block;
+            padding: 8px;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            color: black;
+        }
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+        .current-page {
+            font-weight: bold;
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+        form {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        label, button {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
     <h1>Product List</h1>
     <form method="get">
-        <label for="name">name:</label>
-        <input type="text" name="name" id="name">
-        <br>
-        <label for="category">Category:</label>
-        <input type="text" name="category" id="category">
-        <br>
-        <label for="price">Price:</label>
-        <input type="text" name="price" id="price">
-        <br>
-        <input type="submit" value="Filter">
+        <label for="{{ filter.form.name.label }}">Name:</label>
+        {{ filter.form.name }}
+        <label for="{{ filter.form.category.label }}">Category:</label>
+        {{ filter.form.category }}
+        <label for="{{ filter.form.price.label }}">Price:</label>
+        {{ filter.form.price }}
+        <button type="submit">Filter</button>
     </form>
-    <hr>
-    <ul>
-    {% for product in products %}
-        <li>{{ product.name }} - {{ product.category }} - {{ product.price }}</li>
-     {% empty %}
-        <li>No products found.</li>
-    {% endfor %}
-    </ul>
-{% endblock %}
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in filter.qs %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.price }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No products found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">&lsaquo; previous</a>
+            {% endif %}
+            <span class="current-page">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next &rsaquo;</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>    
