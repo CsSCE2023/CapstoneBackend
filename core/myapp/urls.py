@@ -11,4 +11,6 @@ api.add_router("/product", views.router)
 
 urlpatterns = [
     path("api/", api.urls),
+    path("search/", search_product, name="product-search"),
+
 ]
