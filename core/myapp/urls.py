@@ -1,5 +1,7 @@
 from django.urls import path
 from ninja import NinjaAPI
+from .views import product_list, search_product
+
 
 from . import views
 
