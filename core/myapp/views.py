@@ -1,5 +1,6 @@
 # Create your views here.
 from typing import Optional
+from django.shortcuts import render
 
 from django.shortcuts import render
 from myapp.filters import ProductFilter
@@ -8,6 +9,9 @@ from django.http import HttpRequest
 from ninja import ModelSchema, Router
 
 from .models import Product
+
+from django.views.generic import ListView
+from django.db.models import Q
 
 router = Router()
 
@@ -35,6 +39,17 @@ def product_read(
         products = products.filter(price__lte=price)
 
     return products
+
+
+def search_product(request):
+    """ search function  """
+    if request.method == "POST":
+        query_name = request.POST.get('name', None)
+        if query_name:
+            results = Product.objects.filter(name__contains=query_name)
+            return render(request, 'product-search.html', {"results":results})
+
+    return render(request, 'product-search.html')
   
   
 def product_list(request):
