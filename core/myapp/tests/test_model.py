@@ -1,15 +1,22 @@
+from decimal import Decimal
+
 from django.test import TestCase
 from myapp.models import Product
 
 
 class ProductTest(TestCase):
-    def setup(self):
-        print("doing setup")
-        Product.objects.create(name="potato", category="vegies", price=1.85)
-        Product.objects.create(name="fish", category="meat", price=3.00)
+    def setUp(self):
+        self.potato = {
+            "name": "Potato",
+            "category": "Vegetable",
+            "price": Decimal("1.85"),
+        }
+        Product.objects.create(**self.potato)
+        Product.objects.create(name="fish", category="meat", price=Decimal("3"))
 
-    def test_product_created(self):
-        print("rinning test")
-        potato = Product.objects.get(name="potato")
-        fish = Product.objects.get(name="fish")
-        print(potato)
+    def test_products_in_db(self):
+        get_potato = Product.objects.get(name=self.potato["name"])
+        self.assertTrue(isinstance(get_potato, Product))
+        self.assertEqual(str(get_potato), self.potato["name"])
+        self.assertEqual(get_potato.category, self.potato["category"])
+        self.assertEqual(get_potato.price, self.potato["price"])

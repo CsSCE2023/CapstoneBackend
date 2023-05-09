@@ -49,3 +49,14 @@ repos:
         entry: mypy --config-file pyproject.toml
         types: [ python ]
         language: system
+
+# Uncomment this for deployment
+
+  # - repo: local
+  #   hooks:
+  #     - id: django-test
+  #       name: django-test
+  #       entry: poetry run python core/manage.py test
+  #       always_run: true
+  #       pass_filenames: false
+  #       language: system
