@@ -2,6 +2,9 @@
 from typing import Optional
 from django.shortcuts import render
 
+from django.shortcuts import render
+from myapp.filters import ProductFilter
+from myapp.models import Product
 from django.http import HttpRequest
 from ninja import ModelSchema, Router
 
@@ -38,7 +41,6 @@ def product_read(
     return products
 
 
-
 def search_product(request):
     """ search function  """
     if request.method == "POST":
@@ -48,4 +50,9 @@ def search_product(request):
             return render(request, 'product-search.html', {"results":results})
 
     return render(request, 'product-search.html')
-
+  
+  
+def product_list(request):
+    queryset = Product.objects.all()
+    product_filter = ProductFilter(request.GET, queryset=queryset)
+    return render(request, "product_list.html", {"filter": product_filter})
