@@ -1,6 +1,9 @@
 # Create your views here.
 from typing import Optional
 
+from django.shortcuts import render
+from myapp.filters import ProductFilter
+from myapp.models import Product
 from django.http import HttpRequest
 from ninja import ModelSchema, Router
 
@@ -32,3 +35,9 @@ def product_read(
         products = products.filter(price__lte=price)
 
     return products
+  
+  
+def product_list(request):
+    queryset = Product.objects.all()
+    product_filter = ProductFilter(request.GET, queryset=queryset)
+    return render(request, "product_list.html", {"filter": product_filter})
